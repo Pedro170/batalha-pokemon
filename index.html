@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalha Pokemon</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <div class="arena__grid">
+        <div class="arena__grid-item">
+          <div class="box-pokemon">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="pokemon" class="foto-pokemon">
+          </div>
+          <button class="escolher-pokemon" data-player="player-1">Sortear</button>
+        </div>
+        
+        <div class="arena__grid-item">
+          <div class="box-pokemon">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="pokemon" class="foto-pokemon">
+          </div>
+          <button class="escolher-pokemon" data-player="player-2">Sortear</button>
+        </div>
+      </div>
+
+      <button class="batalhar">batalhar</button>
+    </div>
+  </div>
+
+  <div class="modal-container">
+    <div class="modal">
+      <button class="fechar">&times;</button>
+    </div>
+    
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>

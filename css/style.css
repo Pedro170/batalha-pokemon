@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #222, #444);
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.arena__grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 400px;
+  background: #222;
+  border-radius: 200px;
+  padding: 60px 30px;
+}
+
+.arena__grid-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+.arena__grid-item .box-pokemon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(400px - 60px);
+  height: calc(400px - 60px);
+  border-radius: 50%;
+  background: radial-gradient(#222, #333);
+  border: solid 2px rgb(41, 15, 160);
+  box-shadow: 0px 0px 30px 3px rgba(41, 15, 160, 0.9) ;
+}
+
+.arena__grid-item .box-pokemon img {
+  width: 80px;
+}
+
+.arena__grid-item .escolher-pokemon {
+  position: absolute;
+  bottom: -80px;
+  width: max-content;
+  border: none;
+  border-radius: 0.5rem;
+  background: linear-gradient(#fed651 30%, #e2ab2a);
+  box-shadow: 0 0 0 2px #e2ab2a, 0 0 0 2px #fed651, 0 5px 0px #794a1d;
+  font-size: 1.125rem;
+  text-shadow: 2px 2px 2px #93422b;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #9e9e9e9d;
+  z-index: 40;
+}
+
+.modal-container.open {
+  display: flex;
+}
+
+.modal {
+  position: relative;
+  width: 60%;
+  min-height: 400px;
+  border-radius: 5px;
+  background: #fff;
+  padding: 30px;
+}
+
+.modal button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: purple;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal .barra-progress {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal .barra-progress .progress {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 20px;
+  background: red;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  z-index: 1;
+}
+
+@media (max-width: 800px) {
+  .arena__grid {
+    flex-direction: column;
+    height: auto;
+  }
+}
