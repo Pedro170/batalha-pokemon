@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +9,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Fredoka One', cursive;
   background: linear-gradient(135deg, #222, #444);
 }
 
@@ -19,7 +21,9 @@ body {
 .content {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+  row-gap: 1rem;
   min-height: 100vh;
 }
 
@@ -59,7 +63,7 @@ body {
   width: 80px;
 }
 
-.arena__grid-item .escolher-pokemon {
+.arena__grid-item .escolher-pokemon, .batalhar {
   position: absolute;
   bottom: -80px;
   width: max-content;
@@ -75,11 +79,20 @@ body {
   transition: 0.3s;
 }
 
+.batalhar {
+  position: initial;
+}
+
+.arena__grid-item .escolher-pokemon:hover, .batalhar:hover {
+  background: linear-gradient(#e2ab2a 30%, #fed651);
+}
+
 .modal-container {
   position: fixed;
   top: 0;
   left: 0;
   display: none;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -112,18 +125,83 @@ body {
   height: 30px;
   border: none;
   border-radius: 50%;
-  background: purple;
+  background: #D63030;
   color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-.modal .barra-progress {
-  position: relative;
+.modal__grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__grid-item {
+  border-radius: 1.5rem;
+  background: #82B5A4;
+  width: 250px;
+  min-height: 350px;
+  padding: .5rem;
+}
+
+.modal__grid-item .progress-group {
   width: 100%;
-  height: 10px;
-  background: #ddd;
-  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.modal__grid-item .progress-group
+.icone-img {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .5rem;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.modal__grid-item .progress-group span {
+  text-shadow: 2px 2px 2px #2A5249;
+  color: #fff;
+}
+
+.modal__grid-item .progress-group
+.icone-img .box-icone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  background: #356654;
+  box-shadow: inset 0 5px 5px 0 #2A5249, inset 0 5px 5px 0 #2A5249, inset 0 2px 2px 0px #2A5249;
+}
+
+.modal__grid-item .progress-group
+.icone-img img {
+  width: 18px;
+}
+
+.modal__grid-item .box-pokemon {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background: #438B7D;
+  box-shadow: inset 0 10px 0 #3A7364, inset 0 10px 5px #3A7364;
+  padding: 1rem;
+}
+
+.modal .modal__grid-item .barra-progress {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
+  background: #356654;
+  box-shadow: inset 2px 2px 2px #174b2e, inset 2px 5px 2px #1B5F39;
+  padding: .1rem;
+  padding-left: .15rem;
   overflow: hidden;
 }
 
@@ -132,7 +210,7 @@ body {
   top: 2px;
   left: 2px;
   border-radius: 20px;
-  background: red;
+  background: linear-gradient(#FED651, #e2ab2a 60%);
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;

@@ -3,6 +3,7 @@ const players = document.querySelectorAll("[data-player");
 const img = document.querySelectorAll(".foto-pokemon");
 const btnBatalhar = document.querySelector(".batalhar");
 const modalContainer = document.querySelector(".modal-container");
+const btnFechar = modalContainer.querySelector("button");
 
 const gerarPokemonAleatorio = (index) => {
   const max = 1000,
@@ -75,31 +76,55 @@ function batalha() {
   }
 }
 
-const btnFechar = modalContainer.querySelector('button')
-btnFechar.addEventListener('click', () => {
-  modalContainer.classList.remove('open')
-})
+btnFechar.addEventListener("click", () =>  modalContainer.classList.remove("open"));
 
 const exibirModal = (vencedor) => {
-  const modal = modalContainer.querySelector(".modal");
+  const modal = modalContainer.querySelector(".modal__grid-item");
   modalContainer.classList.add("open");
-  
+
   const img =
     vencedor.sprites.versions["generation-v"]["black-white"].animated
-      .front_default !== null
-      ? vencedor.sprites.versions["generation-v"]["black-white"].animated
-          .front_default
-      : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif";
-  modal.innerHTML += `
-    <img src="${img}" alt="s${vencedor.name}" />
-    <p>${vencedor.name}</p>
-    <div class="progress-group">
-        <span>Ataque</span>
-        <div class="barra-progress">
-          <div class="progress" style="width: ${vencedor.stats[1].base_stat}%"></div>
+      .front_default ||
+    vencedor.sprites.versions["generation-v"]["black-white"].back_default;
+
+  modal.innerHTML = `
+        <div class="box-pokemon">
+        <img
+            src="${img}"
+            alt="${vencedor.name}"
+            class="foto-pokemon"
+          />
+        <p>${vencedor.name}</p>
+
+        <div class="progress-group">
+          <span>Ataque</span>
+          <div class="barra-progress">
+            <div class="progress" style="width: style="width: ${vencedor.stats[2].base_stat > 100 ? "100" : vencedor.stats[2].base_stat}%"></div>
+          </div>
+        </div>
+
+        <div class="progress-group">
+          <span>Defesa</span>
+          <div class="barra-progress">
+            <div class="progress" style="width: ${vencedor.stats[2].base_stat > 100 ? "100" : vencedor.stats[2].base_stat}%"></div>
+          </div>
+        </div>
+
+        <div class="progress-group">
+          <span>Super Ataquer</span>
+          <div class="barra-progress">
+            <div class="progress" style="width: ${vencedor.stats[3].base_stat}%"></div>
+          </div>
+        </div>
+
+        <div class="progress-group">
+          <span>Super Defesa</span>
+          <div class="barra-progress">
+            <div class="progress" style="width: ${vencedor.stats[4].base_stat}%"></div>
+          </div>
         </div>
       </div>
-  `;
+    `;
 };
 
 btnBatalhar.addEventListener("click", batalha);
